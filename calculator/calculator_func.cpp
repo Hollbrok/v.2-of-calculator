@@ -118,7 +118,7 @@ double get_number(char** buffer)
     ignore_spaces(buffer);
     double number = atof(*buffer);
 
-    while (isdigit(**buffer))
+    while (isdigit(**buffer) || (**buffer == ','))
         (*buffer)++;
 
     ignore_spaces(buffer);
@@ -136,7 +136,7 @@ double get_bracket(char** buffer)
         (*buffer)++;
         test = get_express(buffer);
 
-        if ((**buffer) != ')')
+        if ((**buffer) != ')') 
         {
             printf("**buffer = [%c]\n", **buffer);
             printf("ERROR\n");
