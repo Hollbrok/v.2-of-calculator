@@ -15,12 +15,15 @@ char* make_buffer(FILE* text)
 
     fread(buffer, sizeof(char), file_length, text);
 
+    buffer[file_length] = '\0';
+
     return buffer;
 }
 
 
 double get_express(char** buffer)
 {
+    printf("[%s]\n", *buffer);
     double result = 0;
     int sign      = 1;
 
@@ -67,7 +70,7 @@ double get_express(char** buffer)
             sign = 1;
         }
 
-        else
+        else if(**buffer)
             (*buffer)++;
 
 
@@ -76,7 +79,7 @@ double get_express(char** buffer)
     return result;
 }
 
-double get_op(char** buffer)
+double get_op(char** buffer) // "*"     "/"
 {
     ignore_spaces(buffer);
 
